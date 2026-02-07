@@ -1,6 +1,6 @@
 streamlit
-pyspark==3.5.0
+pyspark
 pandas
 matplotlib
 seaborn
-numpy
+numpy<2
