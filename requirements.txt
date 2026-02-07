@@ -1,1 +1,6 @@
-pip freeze > requirements.txt
+streamlit
+pyspark==3.5.0
+pandas
+matplotlib
+seaborn
+numpy
