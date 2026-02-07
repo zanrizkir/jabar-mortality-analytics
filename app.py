@@ -1,3 +1,4 @@
+import os
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, sum
 from pyspark.sql.types import IntegerType
@@ -7,6 +8,11 @@ from pyspark.sql.types import IntegerType
 spark = SparkSession.builder \
     .appName("MiniProject_KematianJabar") \
     .getOrCreate()
+
+if os.name == 'posix': 
+    # Arahkan PySpark ke Java yang diinstall via packages.txt
+    os.environ['JAVA_HOME'] = "/usr/lib/jvm/default-java"
+    os.environ['PATH'] = os.environ.get('PATH', '') + ":" + os.environ['JAVA_HOME'] + "/bin"
 
 # 2. Load Data (Tahap Storage ke Processing)
 df = spark.read.csv("data/dataset.csv", header=True, inferSchema=True)
